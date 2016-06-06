@@ -17,9 +17,12 @@ Pod::Spec.new do |s|
   
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://code.csdn.net/u011367651/xfvoice.git" }
+  s.source       = { :git => "https://github.com/xxdzyyh/XFVoice.git", :tag => '0.0.1' }
+
+  s.source_files = "Src/*.h","Scr/*.m"
 
   s.vendored_frameworks = "**/iflyMSC.framework"
+
   s.frameworks = "AVFoundation", "SystemConfiguration", "Foundation", "CoreTelephoney"
 
   s.library = "z"

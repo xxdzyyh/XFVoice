@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ISRDataHelper.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *textView;
@@ -28,6 +29,9 @@
 
     _iFlySpeechRecognizer =  [IFlySpeechRecognizer sharedInstance]; //设置听写模式
     
+    //设置音频来源为麦克风
+    [_iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
+    
     [_iFlySpeechRecognizer setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
     
     //2.设置听写参数
@@ -36,12 +40,7 @@
     //asr_audio_path是录音文件名,设置value为nil或者为空取消保存,默认保存目录在 Library/cache下。
     [_iFlySpeechRecognizer setParameter:@"asrview.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
     
-    
-    
     _iFlySpeechRecognizer.delegate = self;
-    
-    
-    
 }
 
 - (void)onResults:(NSArray *)results isLast:(BOOL)isLast {
@@ -55,9 +54,16 @@
     for (NSString *key in dic){
         [result appendFormat:@"%@",key];//合并结果
     }
-
     
-    self.textView.text = result;
+     NSString * resu = [ISRDataHelper stringFromJson:result];
+
+    if (!isLast) {
+        self.textView.text = resu;
+        
+    } else {
+
+        [_iFlySpeechRecognizer cancel];
+    }
 }
 
 - (void)onBeginOfSpeech {
