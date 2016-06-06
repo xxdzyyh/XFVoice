@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "XFVoice"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "科大讯飞语音识别"
 
   s.description  = <<-DESC
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/xxdzyyh/XFVoice.git", :tag => '0.0.1' }
+  s.source       = { :git => "https://github.com/xxdzyyh/XFVoice.git", :tag => '0.0.2' }
 
   s.source_files = "Src/*.h","Scr/*.m"
 

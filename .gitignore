@@ -1,0 +1,28 @@
+# atom .gitignore
+
+# Xcode
+.DS_Store
+build/
+Build/            # ignore Build folder
+*.pbxuser         # ignore all *.pbxuser
+!default.pbxuser  # except default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+#*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+DerivedData
+.idea/
+
+# Pods - for those of you who use CocoaPods
+Pods
+
+# handle existed project using following command
+# git rm --cached `git ls-files -i --exclude-from=.gitignore`
